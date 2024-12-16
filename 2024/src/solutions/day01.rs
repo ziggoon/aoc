@@ -2,12 +2,9 @@ use std::collections::HashMap;
 use std::fs;
 use anyhow::Result;
 
-// 1. pair smallest in each list incrementally
-// 2. calculate difference between all pairs
-// 3. sum all differences
 pub fn part1() -> Result<i32> {
-    let input = fs::read_to_string("inputs/day01.txt")?;
-    //let input = fs::read_to_string("inputs/day01_test.txt")?;
+    //let input = fs::read_to_string("inputs/day01.txt")?;
+    let input = fs::read_to_string("inputs/day01_test.txt")?;
     let mut total = 0;
     let mut right = vec![];
     let mut left = vec![];
@@ -32,11 +29,9 @@ pub fn part1() -> Result<i32> {
     Ok(total)
 }
 
-// 1. find how often a number from the left list appears in the right list
-// 2. calculate similarity score by summing (key * value)
 pub fn part2() -> Result<i32> {
-    let input = fs::read_to_string("inputs/day01.txt")?;
-    //let input = fs::read_to_string("inputs/day01_test.txt")?;
+    //let input = fs::read_to_string("inputs/day01.txt")?;
+    let input = fs::read_to_string("inputs/day01_test.txt")?;
     let mut total = 0;
     let mut occurrences: HashMap<i32, i32> = HashMap::new();
     let mut left = vec![];
