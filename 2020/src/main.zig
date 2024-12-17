@@ -4,8 +4,11 @@ const testing = std.testing;
 
 const day01 = @import("solutions/day01.zig");
 const day02 = @import("solutions/day02.zig");
+const day03 = @import("solutions/day03.zig");
+
 const day1_path = "input/day01.txt";
 const day2_path = "input/day02.txt";
+const day3_path = "input/day03.txt";
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -22,10 +25,16 @@ pub fn main() !void {
     print("[+] day 2 part 1: {d}\n", .{result});
     result = try day02.part2(allocator, day2_path);
     print("[+] day 2 part 2: {d}\n\n", .{result});
+
+    result = try day03.part1(allocator, day3_path);
+    print("[+] day 3 part 1: {d}\n", .{result});
+    const result2 = try day03.part2(allocator, day3_path);
+    print("[+] day 3 part 2: {d}\n\n", .{result2});
 }
 
 const test_path_day1 = "input/day01-test.txt";
 const test_path_day2 = "input/day02-test.txt";
+const test_path_day3 = "input/day03-test.txt";
 test "day 1 part 1" {
     const allocator = testing.allocator;
     const part1 = try day01.part1(allocator, test_path_day1);
@@ -56,4 +65,20 @@ test "day 2 part 2" {
 
     try testing.expectEqual(@as(u32, 1), part2);
     print("[+] day 2 part 2 test ✅: {d}\n", .{part2});
+}
+
+test "day 3 part 1" {
+    const allocator = testing.allocator;
+    const part1 = try day03.part1(allocator, test_path_day3);
+
+    try testing.expectEqual(@as(u32, 7), part1);
+    print("[+] day 3 part 1 test ✅: {d}\n", .{part1});
+}
+
+test "day 3 part 2" {
+    const allocator = testing.allocator;
+    const part2 = try day03.part2(allocator, test_path_day3);
+
+    try testing.expectEqual(@as(u64, 336), part2);
+    print("[+] day 3 part 2 test ✅: {d}\n", .{part2});
 }
